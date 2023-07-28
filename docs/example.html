@@ -7,25 +7,7 @@
     <script type="text/javascript">
         var indexedDB = window.indexedDB || window.webkitIndexedDB || 
                         window.mozIndexedDB || window.msIndexedDB;
-        var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
         var db;
-
-        function deleteItem(event) {
-        // retrieve the name of the task we want to delete
-        let dataTask = event.target.getAttribute("data-task");
-
-        // open a database transaction and delete the task, finding it by the name we retrieved above
-        let transaction = db.transaction(["toDoList"], "readwrite");
-        let request = transaction.objectStore("toDoList").delete(dataTask);
-
-        // report that the data item has been deleted
-        transaction.oncomplete = () => {
-            // delete the parent of the button, which is the list item, so it no longer is displayed
-            event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-            note.innerHTML += `<li>Task "${dataTask}" deleted.</li>`;
-        };
-        }
-
 
         (function () {     
             var peopleData = [
@@ -76,9 +58,39 @@
                 }, false);
  
                 btnDelete.addEventListener("click", function () {
-                    var id = document.getElementById("txtID").value;
-                    var transaction = db.transaction(["people"], "readwrite");
+                    var id = parseInt(document.getElementById("txtID").value);
+                    var transaction = db.transaction("people", "readwrite");
                     var objectStore = transaction.objectStore("people");
+
+                    var req = objectStore.openCursor();
+                    req.onerror = function(event) {
+                    console.err("error fetching data");
+                    };
+                    req.onsuccess = function(event) {
+                    let cursor = event.target.result;
+                    if (cursor) {
+                        let key = cursor.primaryKey;
+                        let value = cursor.value;
+                        console.log(key, value);
+                        cursor.continue();
+                    }
+                    else {
+                        // no more results
+                    }
+                    };
+
+
+                    var req = objectStore.openCursor(id);
+                    req.onsuccess = function(e) {
+                    var cursor = e.target.result; 
+                    if (cursor) { // key already exist
+                        console.log("id " + id + " exists!");
+                    } else{
+                        console.log("id: " + id + " does not exist...");
+                    }
+                    };
+
+
                     var request = objectStore.delete(id);
                     request.onsuccess = function(evt) {  
                         // It's gone!  
