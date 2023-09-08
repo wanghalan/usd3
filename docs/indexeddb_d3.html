@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>US Census TIGER Map</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    
+    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
+    <script src="d3.v6.1.1/d3.min.js"></script>
+
+    <!-- link stylesheet-->
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="map">
+    <!-- space for data filters (option for button and popup or side menu?) -->
+    <div id="filter-options"></div>
+
+    <!-- visualization elements -->
+    <div id="main-vis">
+        <div id="map">
+            <!-- <svg id="map-svg"></svg> -->
+        </div>
+        <div id="box-whisker"></div>
+        <div id="summary-table"></div>
+        <div id="data-table"></div>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>
