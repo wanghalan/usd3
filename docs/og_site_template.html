@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>National Capital Region</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container-fluid">
+    <span class="navbar-brand">
+      <img alt="site logo" height="24px" width="24px" src="https://raw.githubusercontent.com/uva-bi-sdad/community/main/logo.svg">
+      <span>National Capital Region</span>
+    </span>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <p>
+    <button type="button" class="btn right-align" data-toggle="collapse" data-target="#collapseExample">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>                     
+    </button>
+  </p>
+  <div class="collapse in" id="collapseExample">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <!-- starting layer select -->
+          <select class="form-select filter-menu" id="select-starting">
+            <label for="select-starting">Select Starting Layer</label>
+            <option selected>Block Group</option>
+            <option value="1">County</option>
+            <option value="2">Tract</option>
+          </select>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <!-- counties select -->
+            <select class="form-select filter-menu" id="select-county">
+              <label class="control-label" for="select-county">Counties</label>
+              <option selected>county 1</option>
+              <option value="1">county 2</option>
+              <option value="2">county 3</option>
+            </select>
+
+            <!-- tract select -->
+            <select class="form-select filter-menu" id="select-tract">
+              <label for="select-tract">Tracts</label>
+              <option selected>tract 1</option>
+              <option value="1">tract 2</option>
+              <option value="2">tract 3</option>
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <!-- variable select -->
+          <select class="form-select filter-menu" id="select-variable">
+            <label for="select-variable">Variables</label>
+            <option selected>var 1</option>
+            <option value="1">var 2</option>
+            <option value="2">var 3</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
