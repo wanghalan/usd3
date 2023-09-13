@@ -1,0 +1,10 @@
+.right-align {
+  float: right;
+}
+
+.filter-menu {
+  width: 90%;
+  padding: 5%;
+  margin: 2%;
+  position: relative;
+}
