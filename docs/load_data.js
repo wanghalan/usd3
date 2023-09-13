@@ -25,20 +25,25 @@ const openDB = (storeName) => {
     });
 };
 
-// Function 1: Fetch JSON data from the URL
-// async function fetchData(url) {
-//     try {
-//       const response = await fetch(url); // Make the asynchronous request
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-//       const jsonData = await response.json(); // Parse JSON data
-//       return jsonData;
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//       throw error;
-//     }
-//   }
+
+/**
+ * 
+ * @param {String} url 
+ * @returns {String}
+ */
+async function fetchData(url) {
+    try {
+      const response = await fetch(url); // Make the asynchronous request
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const jsonData = await response.json(); // Parse JSON data
+      return jsonData;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
 
 const storeData = (storeName, id, data) => {
     console.log("Storing data: ");
@@ -137,9 +142,9 @@ const syncRepoData = (storeName) => {
 const syncAllData = () => {
     syncShapefiles("shapefiles");
     syncRepoData("testing"); //this can be the name of the repository
-        
+
 }
 
 
-// Initialize the app
+// Synchronize the data
 syncAllData();
