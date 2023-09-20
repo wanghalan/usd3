@@ -1,0 +1,11 @@
+.navbar-uva {
+  background-color: #232D4B;
+  color: #F1F1EF;
+}
+
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
