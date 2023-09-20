@@ -1,0 +1,48 @@
+body {
+  font-family: "Franklin Gothic Medium", sans-serif;
+}
+
+.navbar-uva {
+	background-color: #232D4B;
+	color: #F1F1EF;
+}
+
+.nav-wrap {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+}
+
+.nav-item {
+	color: #C8CBD2;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+.navbar-toggle .icon-bar {
+	background-color: #C8C8D2;
+}
+
+.orange {
+	background-color: #F9DCBF;
+}
+.blue {
+	background-color: #C8CBD2;
+}
+
+#main-container {
+	height: 100vh;
+}

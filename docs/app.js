@@ -76,14 +76,44 @@ const initMap = (storeName) => {
             zoomSnap: 0.25
         }).setView([CENTER_LONG, CENTER_LAT], 6.5);
 
-    let statesData;
-    fetch("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
-        .then(results => results.json())
-        .then(data => {
-            L.geoJson(data).addTo(map);
-        });
+    openDB(storeName).then(db => {
+        // get list of shapefile names
+        fetchData('https://raw.githubusercontent.com/wanghalan/shapes/main/manifest.json')
+        .then((data) => {
+            const transaction = db.transaction([dbName], 'readonly');
+            const store = transaction.objectStore(dbName);
 
-    map.on("zoom", changeView);
+            // load and render each path
+            data.forEach((filename, index) => {
+                let bgCode = filename.split('/').pop().slice(0, 5);
+
+                // test if shape already stored in db
+                const request = store.get(bgCode);
+                request.onsuccess = function(event) {
+                    if (!event.target.result) {
+                        // data is not in indexedDB, fetch it and then render map
+                        const url = 'https://raw.githubusercontent.com/wanghalan/shapes/main/' + filename;
+
+
+                        fetchData(url)
+                        .then(geos => storeData(dbName, bgCode, geos))
+                        .catch(error => {
+                            console.error('Error in the asynchronous process: ', error);});
+                    }
+
+                    renderMap(storeName, bgCode, map)
+                }
+            })
+        })
+    })
+
+    // fetch("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
+    //     .then(results => results.json())
+    //     .then(data => {
+    //         L.geoJson(data).addTo(map);
+    //     });
+
+    //map.on("zoom", changeView);
 
     function changeView(event) {
         let currZoom = map.getZoom();
@@ -99,7 +129,7 @@ const initMap = (storeName) => {
                     const store = transaction.objectStore(dbName);
 
                     data.forEach((filename, index) => {
-                        let bgCode = filename.split("/").pop().slice(0, 12)
+                        let bgCode = filename.split("/").pop().slice(0, 12);
 
                         const request = store.get(bgCode);
                         store.get(bgCode).onsuccess = function(event){
@@ -117,7 +147,7 @@ const initMap = (storeName) => {
                                     });        
                             }
 
-                            renderMap(storeName, bgCode, map)
+                            //renderMap(storeName, bgCode, map)
                         };
                     })
                 }).catch(error => {
@@ -148,7 +178,11 @@ const renderMap = (storeName, id, map) => {
 
                 if (key !== undefined) {
                     console.log("Key: " + key);
-                    L.geoJson(value.data).addTo(map);
+
+                    let places = topojson.feature(value.data,value.data.objects.places);
+                    let geo=L.geoJSON(places).addTo(map);
+                    map.fitBounds(geo.getBounds());
+                    //L.geoJson(value.data).addTo(map);
                 }
                 else{
                     console.log("Key is undefined");
