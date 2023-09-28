@@ -1,7 +1,12 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/": "pages/index.html",
-  "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/map-example2": "pages/map-example2.js",
+  "/": "pages/index.js",
+  "/map-example": "pages/map-example.js",
+  "/map3": "pages/map3.js",
+  "/map": "pages/map.js",
+  "/test-bar": "pages/test-bar.js",
+  "/hooks/useD3": "pages/hooks/useD3.js",
+  "/_document": "pages/_document.js"
 }
