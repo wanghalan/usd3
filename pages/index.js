@@ -1,7 +1,8 @@
 import Layout from '../components/layout';
 import React, { useState, useEffect } from "react";
 import BarChart from './test-bar';
-import {Map, MeshMap} from './map3.js';
+import Map from './map3.js';
+import MeshMap from './mesh-map.js';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styles from '../styles/Home.module.css';
