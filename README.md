@@ -1,2 +1,1 @@
-# usd3
-Stress test rendering block-level dummy data in a smart way
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).
