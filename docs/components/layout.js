@@ -1,13 +1,10 @@
-import styles from '../styles/layout.module.css';
 import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { NavbarBrand } from 'react-bootstrap';
+import styles from '../styles/layout.module.css';
 
 function PageTab({tabName}) {
   return <button className={styles.NavTab}>{tabName}</button>;
@@ -40,7 +37,7 @@ export default function Layout({ children }) {
               <Container fluid>
               <NavbarBrand>
                 <img className={styles.NavbarBrand} width="24px" height="auto" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/University_of_Virginia_Rotunda_logo.svg" alt="University of Virginia"/>
-                <span className={styles.NavbarBrand}>Boaty McBoatface Dashboard</span>
+                <span className={styles.NavbarBrand} id={styles.DashboardName}>Boaty McBoatface Dashboard</span>
               </NavbarBrand>
               </Container>
             </Navbar>

@@ -45,7 +45,7 @@
 }
 
 .ContentInvisible {
-  display: none;
+  display: none !important;
 }
 
 .VisContainer {
@@ -64,6 +64,13 @@
   background-color: #ffffff;
   position: sticky;
   top: 0;
+}
+
+.ToggleIcon {
+  fill: #666666;
+  align-self: flex-end;
+  margin: auto 0;
+  margin-right: 0;
 }
 
 .SummaryBox {
@@ -101,6 +108,8 @@
   border: none;
   padding-top: 2%;
   padding-left: 3%;
+  min-height: 30px;
+  border-radius: 5px;
 }
 
 #MainContent {
@@ -116,18 +125,13 @@
   height: 91%;
   border: 3px solid #DADADA;
   margin: 2%;
-}
-
-#FilterItems {
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  justify-content: space-evenly;
+  overflow: hidden;
 }
 
 #FilterHead {
   font-style: italic;
   background-color: #F1F1EF;
+  color: #666666;
   padding: 5%;
   font-size: 20px;
   position: sticky;
@@ -142,12 +146,50 @@
   margin-right: 5%;
 }
 
-#FilterMap {
-  padding: 2%;
-  margin: 0% 5%;
+#FilterItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: scroll;
+  padding-bottom: 40px;
+}
+
+#MapContainer {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 90%;
+  margin: auto 5%;
+}
+
+#MapToggle {
+  width: 100%;
+  min-height: 50px;
+  /* margin: 0% 5%; */
+  margin-top: 5%;
   background-color: #F1F1EF;
-  max-height: 40%;
-  margin-top: 3%
+  border-bottom: 1px solid #DADADA;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3% 5%;
+  color: #495E9D;
+  font-style: italic;
+}
+
+#FilterMap {
+  width: 100%;
+  min-height: 300px;
+}
+
+#FilterMapBox {
+  display: flex;
+  width: 100%;
+  /* margin: 0% 5%; */
+  background-color: #F1F1EF;
+  min-height: 300px;
 }
 
 #SelectedDesc {
@@ -156,8 +198,9 @@
   margin: 0% 5%;
   border: 1px solid #DADADA;
   padding: 2%;
-  /* max-height: 25%;
-  overflow: hidden; */
+  height: 30%;
+  min-height: 120px;
+  overflow: hidden;
 }
 
 #SelectedBox {
@@ -165,8 +208,9 @@
   font-weight: lighter;
   border: 1px solid #DADADA;
   padding: 2%;
-  /* max-height: 80%;
-  overflow: scroll; */
+  min-height: 70%;
+  max-height: 90%;
+  overflow: scroll;
 }
 
 @media (max-width: 480px) {
@@ -174,6 +218,7 @@
     display: flex;
     float: none;
     width: 100%;
+    height: 150px;
     min-height: 100px;
     padding: 0%;
     border: 0.5px solid #666666;
@@ -185,7 +230,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 80%;
+    max-height: 100%;
     background-color: #DADADA;
     overflow-y: scroll;
     flex-basis: auto;
@@ -202,39 +247,53 @@
 
   .SummaryBox {
     flex-direction: column;
+    background-color: #F1F1EF;
   }
 
   .VisContainer {
-    display: none;
+    height: 60%;
+    min-height: 60%;
+    margin: 0%;
+    background-color: #FFFFFF;
+    border: none;
   }
 
   #MainContent {
-    height: 100%;
+    display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
   #FilterBox {
     font-size: 12px;
     width: 100%;
     margin: 0%;
-    border: 3px solid #DADADA;
+    border: none;
+    border-top: 3px solid #F1F1EF;
     justify-content: flex-end;
     background-color: #ffffff;
-    height: 100%;
-    bottom: 0;
+    height: fit-content;
+    max-height: 100%;
+    align-self: flex-end;
+    overflow: visible;
   }
 
   #FilterHead {
     order: 99;
+    align-self: flex-end;
+    border-top: 2px solid #FFFFFF;
+  }
+
+  #FilterHeadItems {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    opacity: 0.8;
   }
 
   #FilterItems {
-    padding: 5% 0%;
-    row-gap: 5px;
+    position: relative;
+    padding: 2% 0%;
+    align-content: start;
   }
-
-  #FilterMap {
-    margin-top: 0%;
-  }
-
 }
